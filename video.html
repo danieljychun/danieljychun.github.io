@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartAirCon Video Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f4f4f4;
+        }
+        .header {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header img {
+            max-height: 80px;
+            height: auto;
+            width: auto;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .video-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+        .video-thumbnail {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            background: #000;
+            overflow: hidden;
+        }
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .video-card:hover .video-thumbnail img {
+            transform: scale(1.05);
+        }
+        .video-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+        .video-content {
+            padding: 1.5rem;
+        }
+        .video-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+        .video-description {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        .video-link {
+            display: inline-block;
+            color: #e74c3c;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        .video-link:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .video-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .video-thumbnail {
+                height: 180px;
+            }
+            .container {
+                padding: 1rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .video-thumbnail {
+                height: 160px;
+            }
+            .video-content {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <!-- Replace with your logo URL -->
+        <img src="https://smartaircon.co/img/logo.png" alt="SmartAirCon Logo" onerror="this.style.display='none'">
+        <h1 style="margin-top: 1rem; color: #2c3e50;">Video Portfolio</h1>
+    </header>
+
+    <div class="container">
+        <div class="video-grid" id="videoGrid">
+            <!-- Videos populated by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        const videos = [
+            {
+                title: 'GSMA Glomo Awards competition video',
+                description: 'GSMA Glomo Awards 2017 for Smart City IoT applications',
+                youtube: 'PfjIj9nps-8'
+            },{
+                title: 'Global Sources StartupLaunchPad',
+                description: 'Speaking about the benefit of an ecosystem and API Economy while introducing SmartAirCon as an application using UIRD as a standard API and data services.',
+                youtube: '2CGu781Z764'
+            },{
+                title: 'HKEAIA SmartHomeDesign competition video',
+                description: 'Shortlisted as top 5 for Hong Kong Electrical Appliance Industry Association in their SmartHomeDesign competition and a video has been produced to support the competition',
+                youtube: 'D-jUO3kcQyk'
+            },{
+                title: 'TVB Money Magazine interview',
+                description: 'Interviewed by TVB\'s Money Magazine for SmartAirCon\'s',
+                youtube: 'loBXIrX33gY'
+            },{
+                title: 'Smart Device Beyond Innovation at MWCS2016',
+                description: 'Speaking at the World Mobile Congress Shanghai organized by GSMA with the topic "Smart Device beyond Innovation" – presenting SmartAirCon',
+                youtube: 'XkE991nDzws'
+            },{
+                title: 'SmartAirCon at IngDan IoT Fund Roadshow competition',
+                description: 'Pitching at IngDan IoT Funding roadshow and SmartAirCon has won 1st RunnerUp amongst 9 other entries.',
+                youtube: '1dflqEazNPs'
+            },{
+                title: 'SmartAirCon at Asia-Pac Innovation Summit by HKSTP',
+                description: 'Invited as guest speaker at the AsiaPac Innovation Summit at Hong Kong Science & Technology Park',
+                youtube: 'q_yhLcYMCtA'
+            },{
+                title: 'HKTDC ICT Expo 2016 interview',
+                description: 'HKTDC ICT Expo – Smart Home and Enabling technologies using IoT and infrared codes standard',
+                youtube: 'CU87riBREyA'
+            },{
+                title: 'SmartAirCon at Hong Kong Electronics Symposium',
+                description: 'Speaking on SmartAirCon at Hong Kong Electronics Symposium organized by HK Institute of Engineers',
+                youtube: 'vYW4AXfH4Fw'
+            },{
+                title: 'HKEPC2016',
+                description: 'Final presentation at the HKEPC 2016 Award Event where SmartAirCon has received its first award for entering Hong Kong Institute of Engineering\'s first ever competition on Smart City IoT Development competition. SmartAirCon won the industry catero',
+                youtube: 'Fy2PfGhbsik'
+            },{
+                title: 'Introducing SmartAircon at Creative Mornings Hong Kong - "Revolution"',
+                description: 'Creative Morning Hong Kong has invited Daniel Chun as a speaker in 2015 July and that is when Daniel first invited the public to hear his plans to develop SmartAirCon campaign',
+                youtube: 'bnugv_jDbLY'
+            },{
+                title: "Microsoft's National Technology Officer - Fred Sheu introducing SmartAirCon's Big Data Strategy",
+                youtube: 'B78Un9WHrXk'
+            },{
+                title: 'SmartAirCon宣傳片 - 情侶篇',
+                youtube: 'pNAq__p_dwc'
+            },{
+                title: 'Interview with Daniel Chun - Smart Products',
+                youtube: 'VVzvYG5LZTs'
+            },{
+                title: '7th Annual MVNOs Asia - SmartAirCon as a Smart City solution',
+                youtube: 'VDw2TYiER98'
+            },{
+                title: 'Daniel Chun speaking for Smart City Consortium Blueprint - Part 1',
+                youtube: 'BulFEwTKgy8'
+            },{
+                title: 'Daniel Chun speaking for Smart City Consortium Blueprint - Part 2',
+                youtube: 'Pfn0Q0LTdbw'
+            },{
+                title: 'Mobile Computing and Industry 4.0 - Mr. Daniel Chun',
+                youtube: 'OmPeD9dALQk'
+            },{
+                title: 'IoT Network and Security - Mr. Daniel Chun',
+                youtube: 'LhZM8Vj6sIk'
+            },{
+                title: 'Evolution of Mobile Computing - Mr. Daniel Chun',
+                youtube: 'EjtQSHbqyDY'
+            },{
+                title: 'HKTDC ICT Expo 2019 interview - Remotec Technology Limited',
+                youtube: 'qOEVTIAZZ_g'
+            },{
+                title: 'AIRXED 2019-08',
+                youtube: 'i0kjSTvKVQ8'
+            },{
+                title: 'Bluetooth Asia 2019 Interview - Remotec',
+                youtube: 'tsyhRkeMl1Y'
+            },{
+                title: 'Bluetooth Asia 2019 - Remotec (Highlight)',
+                youtube: 'xmWaTvxKejI'
+            },{
+                title: 'Remotec at CES2014',
+                youtube: 'CPtNdKV1r44'
+            },{
+                title: 'Remotec at CES2015',
+                youtube: '2OaLBKMy_zY'
+            },{
+                title: 'Remotec at CES2015 - Scene Master ZRC-80',
+                youtube: 'y3ftEBOPIpA'
+            },{
+                title: 'DBS BusinessClass 智慧生活創新科技活動回顧',
+                youtube: 'qMsdM1uHPbc'
+            },{
+                title: 'Customer Reference Video - Chubu Electric Power Co(中部電力), ここリモ Promotional video 1',
+                youtube: 'KiMC90T736c'
+            },{
+                title: 'Customer Reference Video - Chubu Electric Power Co(中部電力), ここリモ Promotional video 2',
+                youtube: 'xnTIlDBMoDk'
+            },{
+                title: 'Customer Reference Video - Panasonic(パナソニック), コエリモ Promotional video 1',
+                youtube: 'FqapeM_12Eg'
+            },{
+                title: 'Customer Reference Video - Panasonic(パナソニック), コエリモ Promotional video 2',
+                youtube: 'vaRObnkoKas'
+            },{
+                title: '20200101 創科導航 - AIRXED FAN (Full version)',
+                youtube: '8p1ATkrDsBM'
+            },{
+                title: "AIRXED's Founder and CEO - Mr. Daniel Chun pitching at #SLINGSHOT2019 #StartupSG",
+                youtube: 'Z5EmAMdd-7M'
+            },{
+                title: '20200101 創科導航 - AIRXED FAN (Spotlight)',
+                youtube: 'rA2IiIrLJe8'
+            },{
+                title: 'Customer Reference Video - LINE Clova Friends introduction video',
+                youtube: '4O8Zo36JaN8'
+            },{
+                title: '20200402 理財有道 - AIRXED FAN (Full version)',
+                youtube: 'LT1CIQN8n54'
+            },{
+                title: 'AIRXED - IRX 智能家居遙控器',
+                youtube: 'n6O8m8TZWbY'
+            },{
+                title: '萬物互聯：物聯網串連下嘅智慧城市【O2On Air】',
+                youtube: '7s7Gjo-cn-g'
+            },{
+                title: 'Smart Infrastructure Conference 2021 - Daniel Chun',
+                youtube: 'SeMWfSoS0k4'
+            },{
+                title: 'Smart Infrastructure Conference 2021 - Noah Lam',
+                youtube: 'y6t8gAF1U2s'
+            }
+        ];
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const videoGrid = document.getElementById('videoGrid');
+            
+            videos.forEach(video => {
+                const card = document.createElement('div');
+                card.className = 'video-card';
+                
+                card.innerHTML = `
+                    <div class="video-thumbnail">
+                        <a href="https://youtu.be/${video.youtube}" target="_blank" rel="noopener">
+                            <img src="https://img.youtube.com/vi/${video.youtube}/0.jpg" alt="${video.title}" loading="lazy">
+                            <div class="video-overlay">▶ Watch Video</div>
+                        </a>
+                    </div>
+                    <div class="video-content">
+                        <h3 class="video-title">${video.title}</h3>
+                        ${video.description ? `<p class="video-description">${video.description}</p>` : ''}
+                        <a href="https://youtu.be/${video.youtube}" target="_blank" rel="noopener" class="video-link">
+                            Watch on YouTube →
+                        </a>
+                    </div>
+                `;
+                
+                videoGrid.appendChild(card);
+            });
+        });
+    </script>
+</body>
+</html>
